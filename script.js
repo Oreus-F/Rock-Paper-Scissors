@@ -35,10 +35,11 @@ let computerScore = 0;
 
 function playRound(choiceHuman, choiceComputer) {
 
-
+    
     if (choiceHuman === choiceComputer) {
+        alert("Draw ! Try again !");
         console.log("Draw ! Try again !");
-        playRound(choiceHuman, choiceComputer);
+        playRound(getHumanChoice(), getComputerChoice());
     } else if (choiceHuman === "rock") {
         if (choiceComputer === "paper") {
             console.log("You loose ! Paper beat Rock !");
@@ -64,24 +65,20 @@ function playRound(choiceHuman, choiceComputer) {
                 ++humanScore;
             }
         }
-
-    console.log(` Actual score :
-        Player 1 : ${humanScore}
-        Computer : ${computerScore}
-         `)
  
 }
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
 
 function playFiveRound() {
     let round = 1;
 
     while (round !== 6) {
-        console.log(`Round : ${round} !`)
-        playRound(humanSelection, computerSelection);
+        console.log(`Round : ${round} !
+            Actual score :
+        Player 1 : ${humanScore}
+        Computer : ${computerScore}
+         `)
+        playRound(getHumanChoice(), getComputerChoice());
         ++round;
     }
 
