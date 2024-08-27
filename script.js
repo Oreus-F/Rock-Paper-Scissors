@@ -69,5 +69,10 @@ function playRound(choiceHuman, choiceComputer) {
         Player 1 : ${humanScore}
         Computer : ${computerScore}
          `)
+ 
+}
 
-    }
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
