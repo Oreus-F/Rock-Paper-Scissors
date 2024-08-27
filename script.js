@@ -18,10 +18,15 @@ function getComputerChoice() {
     return rpsComputerResult
 }
 
-function getHumanPrompt() {
-    let rpsHumanPrompt = prompt("Rock, Paper, Scissors ?", "");
-    return rpsHumanPrompt.toLowerCase();
+function getHumanChoice() {
+    let rpsHumanChoice = "";
+
+    while (!(rpsHumanChoice === "rock" || rpsHumanChoice === "paper" || rpsHumanChoice === "scissors")) {
+        rpsHumanPrompt = prompt("Rock, Paper, Scissors ?", "");
+        rpsHumanChoice = rpsHumanPrompt.toLowerCase();
+    }
+
+    return rpsHumanChoice;
 }
 
-
-console.log(getHumanPrompt()); 
+console.log(getHumanChoice())
