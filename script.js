@@ -29,4 +29,7 @@ function getHumanChoice() {
     return rpsHumanChoice;
 }
 
-console.log(getHumanChoice())
+const humanScore = 0;
+const computerScore = 0;
+
+
