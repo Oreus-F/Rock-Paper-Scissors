@@ -8,11 +8,11 @@ function getComputerChoice() {
     let rpsComputerResult = "";
 
     if (rpsComputerNumb === 0) {
-        rpsComputerResult = "Rock";
+        rpsComputerResult = "rock";
     } else if (rpsComputerNumb === 1) {
-        rpsComputerResult = "Paper";
+        rpsComputerResult = "paper";
     } else {
-        rpsComputerResult = "Scissors";
+        rpsComputerResult = "scissors";
     }
 
     return rpsComputerResult
