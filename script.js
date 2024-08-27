@@ -15,8 +15,13 @@ function getComputerChoice() {
         rpsComputerResult = "Scissors";
     }
 
-    console.log(rpsComputerNumb)
-    console.log(rpsComputerResult)
+    return rpsComputerResult
 }
 
-getComputerChoice()
+function getHumanPrompt() {
+    let rpsHumanPrompt = prompt("Rock, Paper, Scissors ?", "");
+    return rpsHumanPrompt.toLowerCase();
+}
+
+
+console.log(getHumanPrompt()); 
