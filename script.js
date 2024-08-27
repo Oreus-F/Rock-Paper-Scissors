@@ -29,7 +29,45 @@ function getHumanChoice() {
     return rpsHumanChoice;
 }
 
-const humanScore = 0;
-const computerScore = 0;
+let humanScore = 0;
+let computerScore = 0;
 
 
+function playRound(choiceHuman, choiceComputer) {
+
+
+    if (choiceHuman === choiceComputer) {
+        console.log("Draw ! Try again !");
+        playRound(choiceHuman, choiceComputer);
+    } else if (choiceHuman === "rock") {
+        if (choiceComputer === "paper") {
+            console.log("You loose ! Paper beat Rock !");
+            ++computerScore;
+        } else {
+            console.log("You win ! Rock beat Scissors !");
+            ++humanScore;
+        }
+        } else if (choiceHuman === "paper") {
+            if (choiceComputer === "rock") {
+                console.log("You win ! Paper beat Rock !");
+                ++humanScore;
+            } else {
+                console.log("You loose ! Scissors beat Paper !");
+                ++computerScore;
+            }
+        } else {
+            if (choiceComputer === "rock") {
+                console.log("You loose ! Rock beat Scissors !");
+                ++computerScore;
+            } else {
+                console.log("You win ! Scissors beat Paper !")
+                ++humanScore;
+            }
+        }
+
+    console.log(` Actual score :
+        Player 1 : ${humanScore}
+        Computer : ${computerScore}
+         `)
+
+    }
