@@ -2,4 +2,9 @@ function getRandomInt(max) {
     return Math.floor(Math.random()* max)
 }
 
-console.log(getRandomInt(3))
+function getComputerChoice() {
+    let rpsComputerResult = getRandomInt(3);
+    console.log(rpsComputerResult);
+}
+
+getComputerChoice()
