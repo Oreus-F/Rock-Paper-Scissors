@@ -75,4 +75,21 @@ function playRound(choiceHuman, choiceComputer) {
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+
+function playFiveRound() {
+    let round = 1;
+
+    while (round !== 6) {
+        console.log(`Round : ${round} !`)
+        playRound(humanSelection, computerSelection);
+        ++round;
+    }
+
+    if (humanScore > computerScore) {
+        console.log(`You've won the game. Congrat !`)
+    } else {
+        console.log("you've lost the game. Too bad !")
+    }
+}
+
+playFiveRound()
