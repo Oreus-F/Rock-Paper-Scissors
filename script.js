@@ -3,8 +3,20 @@ function getRandomInt(max) {
 }
 
 function getComputerChoice() {
-    let rpsComputerResult = getRandomInt(3);
-    console.log(rpsComputerResult);
+    let rpsComputerNumb = getRandomInt(3);
+    
+    let rpsComputerResult = "";
+
+    if (rpsComputerNumb === 0) {
+        rpsComputerResult = "Rock";
+    } else if (rpsComputerNumb === 1) {
+        rpsComputerResult = "Paper";
+    } else {
+        rpsComputerResult = "Scissors";
+    }
+
+    console.log(rpsComputerNumb)
+    console.log(rpsComputerResult)
 }
 
 getComputerChoice()
