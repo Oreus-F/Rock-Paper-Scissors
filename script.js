@@ -1,6 +1,12 @@
+// function to got a random number
+
 function getRandomInt(max) {
     return Math.floor(Math.random()* max)
 }
+
+
+// function to interprete the number given with getRandomInt(max) as a string
+// could use switch statement too
 
 function getComputerChoice() {
     let rpsComputerNumb = getRandomInt(3);
@@ -18,6 +24,11 @@ function getComputerChoice() {
     return rpsComputerResult
 }
 
+
+// function to get HumanChoice // while loop that quit only with the right answer
+// it's case sensitive with the .toLowerCase() method
+// miss an alert to warn the player if it's an invalid input
+
 function getHumanChoice() {
     let rpsHumanChoice = "";
 
@@ -29,13 +40,21 @@ function getHumanChoice() {
     return rpsHumanChoice;
 }
 
+
+// score set up at 0
+
 let humanScore = 0;
 let computerScore = 0;
 
 
+// function for one round
+
 function playRound(choiceHuman, choiceComputer) {
 
     
+    // first condition : Draw. Alert the player and launch the PlayRound again without 
+    // skipping a round because the function is called in it's own scope
+
     if (choiceHuman === choiceComputer) {
         alert("Draw ! Try again !");
         console.log("Draw ! Try again !");
@@ -65,8 +84,14 @@ function playRound(choiceHuman, choiceComputer) {
                 ++humanScore;
             }
         }
- 
+ // because the draw is the first condition. We only need 2 conditions for each human choice
+ // also the Else statement inside the else if, need no condition cause it can only be the possible choice
 }
+
+
+// function for an all game
+// while loop used with a variable "round"
+// round start at one in order to display it 
 
 
 function playFiveRound() {
