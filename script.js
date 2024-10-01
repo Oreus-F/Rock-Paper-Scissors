@@ -25,23 +25,6 @@ function getComputerChoice() {
 }
 
 
-// function to get HumanChoice // while loop that quit only with the right answer
-// it's case sensitive with the .toLowerCase() method
-// miss an alert to warn the player if it's an invalid input
-
-function getHumanChoice() {
-    let rpsHumanChoice = "";
-
-    while (!(rpsHumanChoice === "rock" || rpsHumanChoice === "paper" || rpsHumanChoice === "scissors")) {
-        rpsHumanPrompt = prompt("Rock, Paper, Scissors ?", "");
-        rpsHumanChoice = rpsHumanPrompt.toLowerCase();
-    }
-
-    return rpsHumanChoice;
-}
-
-
-// score set up at 0
 
 let humanScore = 0;
 let computerScore = 0;
@@ -49,69 +32,95 @@ let computerScore = 0;
 
 // function for one round
 
-function playRound(choiceHuman, choiceComputer) {
+function playRound() {
 
-    
-    // first condition : Draw. Alert the player and launch the PlayRound again without 
-    // skipping a round because the function is called in it's own scope
+    choiceHuman = this.getAttribute("id");
+    choiceComputer = getComputerChoice();
 
     if (choiceHuman === choiceComputer) {
-        alert("Draw ! Try again !");
-        console.log("Draw ! Try again !");
-        playRound(getHumanChoice(), getComputerChoice());
+        text.textContent = `Draw ! Try again !
+        Actual score :
+        Player 1 : ${humanScore}
+        Computer : ${computerScore}`;
+        return; 
     } else if (choiceHuman === "rock") {
         if (choiceComputer === "paper") {
-            console.log("You loose ! Paper beat Rock !");
             ++computerScore;
+            text.textContent = `You loose ! Paper beat Rock ! 
+            Actual score :
+            Player 1 : ${humanScore}
+            Computer : ${computerScore}`;
         } else {
-            console.log("You win ! Rock beat Scissors !");
             ++humanScore;
+            text.textContent = `You win ! Rock beat Scissors !
+            Actual score :
+            Player 1 : ${humanScore}
+            Computer : ${computerScore}`;
         }
         } else if (choiceHuman === "paper") {
             if (choiceComputer === "rock") {
-                console.log("You win ! Paper beat Rock !");
                 ++humanScore;
+                text.textContent = `You win ! Paper beat Rock !
+                Actual score :
+                Player 1 : ${humanScore}
+                Computer : ${computerScore}`;
             } else {
-                console.log("You loose ! Scissors beat Paper !");
                 ++computerScore;
+                text.textContent = `You loose ! Scissors beat Paper !
+                Actual score :
+                Player 1 : ${humanScore}
+                Computer : ${computerScore}`;
             }
         } else {
             if (choiceComputer === "rock") {
-                console.log("You loose ! Rock beat Scissors !");
                 ++computerScore;
+                text.textContent = `You loose ! Rock beat Scissors !
+                Actual score :
+                Player 1 : ${humanScore}
+                Computer : ${computerScore}`;  
             } else {
-                console.log("You win ! Scissors beat Paper !")
                 ++humanScore;
+                text.textContent = `You win ! Scissors beat Paper !  
+                Actual score :
+                Player 1 : ${humanScore}
+                Computer : ${computerScore}`;    
             }
-        }
- // because the draw is the first condition. We only need 2 conditions for each human choice
- // also the Else statement inside the else if, need no condition cause it can only be the possible choice
-}
+        };
 
+    if (humanScore === 5 || computerScore === 5) {
+        choiceSection.remove();
+        all.insertBefore(tryAgainSection, display);    
+        if (humanScore === 5) {
+            text.textContent = "Congrat ! Ready for the next round ?"
+        } else {
+            text.textContent = "Too bad ! Take your revenge !"
+        };
+    };
+};
 
-// function for an all game
-// while loop used with a variable "round"
-// round start at one in order to display it 
+const all = document.querySelector("#all")
+const choiceSection = document.querySelector(".choices");
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+const display = document.querySelector("#display");
+const text = document.querySelector("#text");
+const buttons = document.querySelectorAll("button");
 
+const tryAgainSection = document.createElement("div")
+const tryAgain = document.createElement("button");
+tryAgain.setAttribute("id", "tryAgain");
+tryAgain.textContent = "Try Again ?";
+tryAgainSection.appendChild(tryAgain);
 
-function playFiveRound() {
-    let round = 1;
+buttons.forEach((button) => {
+    button.addEventListener("click", playRound);
+});
 
-    while (round !== 6) {
-        console.log(`Round : ${round} !
-            Actual score :
-        Player 1 : ${humanScore}
-        Computer : ${computerScore}
-         `)
-        playRound(getHumanChoice(), getComputerChoice());
-        ++round;
-    }
-
-    if (humanScore > computerScore) {
-        console.log(`You've won the game. Congrat !`)
-    } else {
-        console.log("you've lost the game. Too bad !")
-    }
-}
-
-playFiveRound()
+tryAgain.addEventListener("click", () => {
+    tryAgainSection.remove()
+    all.insertBefore(choiceSection, display);
+    humanScore = 0;
+    computerScore = 0;
+    text.textContent = "";
+});
