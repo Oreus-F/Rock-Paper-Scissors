@@ -29,6 +29,7 @@ button {
     width: 100%;
     text-align: center;
     align-self: center;
+    white-space: pre;
 }
 .content{
     padding: 0 20%;

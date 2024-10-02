@@ -38,52 +38,31 @@ function playRound() {
     choiceComputer = getComputerChoice();
 
     if (choiceHuman === choiceComputer) {
-        text.textContent = `Draw ! Try again !
-        Actual score :
-        Player 1 : ${humanScore}
-        Computer : ${computerScore}`;
+        text.textContent = `Draw ! Try again !\n\nActual score :\n\nPlayer 1 : ${humanScore}\n Computer : ${computerScore}`;
         return; 
     } else if (choiceHuman === "rock") {
         if (choiceComputer === "paper") {
             ++computerScore;
-            text.textContent = `You loose ! Paper beat Rock ! 
-            Actual score :
-            Player 1 : ${humanScore}
-            Computer : ${computerScore}`;
+            text.textContent = `You loose ! Paper beat Rock !\n\nActual score :\n\nPlayer 1 : ${humanScore}\nComputer : ${computerScore}`;
         } else {
             ++humanScore;
-            text.textContent = `You win ! Rock beat Scissors !
-            Actual score :
-            Player 1 : ${humanScore}
-            Computer : ${computerScore}`;
+            text.textContent = `You win ! Rock beat Scissors !\n\nActual score :\n\nPlayer 1 : ${humanScore}\nComputer : ${computerScore}`;
         }
         } else if (choiceHuman === "paper") {
             if (choiceComputer === "rock") {
                 ++humanScore;
-                text.textContent = `You win ! Paper beat Rock !
-                Actual score :
-                Player 1 : ${humanScore}
-                Computer : ${computerScore}`;
+                text.textContent = `You win ! Paper beat Rock !\n\nActual score :\n\nPlayer 1 : ${humanScore}\nComputer : ${computerScore}`;
             } else {
                 ++computerScore;
-                text.textContent = `You loose ! Scissors beat Paper !
-                Actual score :
-                Player 1 : ${humanScore}
-                Computer : ${computerScore}`;
+                text.textContent = `You loose ! Scissors beat Paper !\n\nActual score :\n\nPlayer 1 : ${humanScore}\nComputer : ${computerScore}`;
             }
         } else {
             if (choiceComputer === "rock") {
                 ++computerScore;
-                text.textContent = `You loose ! Rock beat Scissors !
-                Actual score :
-                Player 1 : ${humanScore}
-                Computer : ${computerScore}`;  
+                text.textContent = `You loose ! Rock beat Scissors !\n\nActual score :\n\nPlayer 1 : ${humanScore}\nComputer : ${computerScore}`;  
             } else {
                 ++humanScore;
-                text.textContent = `You win ! Scissors beat Paper !  
-                Actual score :
-                Player 1 : ${humanScore}
-                Computer : ${computerScore}`;    
+                text.textContent = `You win ! Scissors beat Paper !\n\nActual score :\n\nPlayer 1 : ${humanScore}\nComputer : ${computerScore}`;    
             }
         };
 
