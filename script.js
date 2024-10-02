@@ -89,7 +89,7 @@ function playRound() {
 
     if (humanScore === 5 || computerScore === 5) {
         choiceSection.remove();
-        all.insertBefore(tryAgainSection, display);    
+        all.appendChild(tryAgainSection);    
         if (humanScore === 5) {
             text.textContent = "Congrat ! Ready for the next round ?"
         } else {
@@ -119,7 +119,7 @@ buttons.forEach((button) => {
 
 tryAgain.addEventListener("click", () => {
     tryAgainSection.remove()
-    all.insertBefore(choiceSection, display);
+    all.appendChild(choiceSection);
     humanScore = 0;
     computerScore = 0;
     text.textContent = "";
