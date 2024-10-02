@@ -113,6 +113,8 @@ tryAgain.setAttribute("id", "tryAgain");
 tryAgain.textContent = "Try Again ?";
 tryAgainSection.appendChild(tryAgain);
 
+text.textContent = "Ready to play ? Choose your weapon !";
+
 buttons.forEach((button) => {
     button.addEventListener("click", playRound);
 });
@@ -122,5 +124,5 @@ tryAgain.addEventListener("click", () => {
     all.appendChild(choiceSection);
     humanScore = 0;
     computerScore = 0;
-    text.textContent = "";
+    text.textContent = "Choose your weapon !";
 });
