@@ -90,6 +90,7 @@ const tryAgainSection = document.createElement("div")
 const tryAgain = document.createElement("button");
 tryAgain.setAttribute("id", "tryAgain");
 tryAgain.textContent = "Try Again ?";
+tryAgainSection.setAttribute("class", "againSection");
 tryAgainSection.appendChild(tryAgain);
 
 text.textContent = "Ready to play ? Choose your weapon !";

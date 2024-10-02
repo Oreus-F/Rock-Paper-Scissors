@@ -42,6 +42,12 @@ button {
     padding: 0px 12px;
 }
 
+.againSection{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
 p#text{
     padding: 50, 0;
 }
