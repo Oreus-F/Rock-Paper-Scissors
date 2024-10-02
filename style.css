@@ -30,12 +30,16 @@ button {
     text-align: center;
     align-self: center;
     white-space: pre;
+    border: 1px solid black ;
+    padding : 25px 48px;
+    margin: 0px;
 }
 .content{
     padding: 0 20%;
 }
 .choices{
     justify-content: space-between;
+    padding: 0px 12px;
 }
 
 p#text{
