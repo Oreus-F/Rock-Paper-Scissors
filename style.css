@@ -1,0 +1,42 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    margin: 0;
+
+}
+
+div {
+    display: flex;
+    flex: 1;
+}
+
+.upperBar, .lowerBar{
+    max-height: 4%;
+}
+
+.content{
+    flex-direction: column;
+}
+
+button {
+    padding: 7px 12px;
+    max-height: fit-content;
+}
+
+#text{
+    width: 100%;
+    text-align: center;
+    align-self: center;
+}
+.content{
+    padding: 0 20%;
+}
+.choices{
+    justify-content: space-between;
+}
+
+p#text{
+    padding: 50, 0;
+}
