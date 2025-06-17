@@ -121,9 +121,8 @@ const playGame = function(){
             const target = e.target.id;
             const player = choices[target];
 
-            console.log(e.target)
-            // score.updateScore(playRound(player));
-            // checkGame();
+            score.updateScore(playRound(player));
+            checkGame();
         });
     });
     
