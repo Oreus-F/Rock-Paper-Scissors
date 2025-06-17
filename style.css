@@ -1,8 +1,14 @@
+:root{
+    --main-dark-grey: #121212;
+    --main-light-grey: #1F1B24;
+}
+
+
 body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
+    height: 100dvh;
     margin: 0;
 
 }
@@ -13,11 +19,13 @@ div {
 }
 
 .upperBar, .lowerBar{
-    max-height: 4%;
+    max-height: 10dvh;
+    background-color: var(--main-light-grey);
 }
 
 .content{
     flex-direction: column;
+    background-color: var(--main-dark-grey);
 }
 
 button {
