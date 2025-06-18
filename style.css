@@ -1,6 +1,6 @@
 :root{
-    --main-dark-grey: #121212;
-    --main-light-grey: #1F1B24;
+    --main-dark-grey: #131315;
+    --main-light-grey: #191D24;
 }
 
 
@@ -13,49 +13,47 @@ body{
 
 }
 
-div {
-    display: flex;
-    flex: 1;
-}
-
 .upperBar, .lowerBar{
-    max-height: 10dvh;
+    height: 10dvh;
     background-color: var(--main-light-grey);
 }
 
+
 .content{
-    flex-direction: column;
-    background-color: var(--main-dark-grey);
-}
-
-button {
-    padding: 7px 12px;
-    max-height: fit-content;
-}
-
-#text{
-    width: 100%;
-    text-align: center;
-    align-self: center;
-    white-space: pre;
-    border: 1px solid black ;
-    padding : 25px 48px;
-    margin: 0px;
-}
-.content{
-    padding: 0 20%;
-}
-.choices{
-    justify-content: space-between;
-    padding: 0px 12px;
-}
-
-.againSection{
-    display: flex;
     flex: 1;
-    justify-content: center;
+    display: grid;
+    grid-template-rows: 1fr 2fr;
 }
 
-p#text{
-    padding: 50, 0;
+
+.content > div:first-child{
+    display: flex;
+    justify-content: space-around;
+    padding: 1.5rem 0;
+}
+
+
+.content > div:first-child > div:not(.score){
+    width: 50%;
+    border: red 1px solid;
+    border-radius: 0.5rem;
+}
+
+
+.score{
+    width: 10rem;
+    border-radius: 0.5rem;
+    border: blue 1px solid;
+    text-transform: uppercase;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+}
+
+
+.score > p:last-child{
+    flex: 1;
+    font-size: 2rem;
 }
