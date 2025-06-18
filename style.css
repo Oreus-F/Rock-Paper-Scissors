@@ -35,9 +35,21 @@ body{
 
 .content > div:first-child > div:not(.score){
     width: 50%;
+    height: 80%;
     border: red 1px solid;
+
     border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    text-transform: uppercase;
+    align-self: center;
+ 
+
+    font-size: 1.5rem;
 }
+
 
 
 .score{
@@ -56,4 +68,25 @@ body{
 .score > p:last-child{
     flex: 1;
     font-size: 2rem;
+}
+
+
+.content > div:last-child {
+    display: flex;
+}
+
+
+.choices{
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.choices > button{
+    width: 24rem;
+    height: 18rem;
+    border-radius: 2rem;
+    border: none;
 }
