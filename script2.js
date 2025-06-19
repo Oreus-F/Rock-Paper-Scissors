@@ -67,13 +67,17 @@ const Score = function(){
 
 
     const updateScore = function(result){
+        const playerDisplay = document.querySelector("#playerScore");
+        const computerDisplay = document.querySelector("#computerScore");
+
         if (result === 'draw'){
             return
         } else {
         result ? humanScore++ : computerScore++;
 
-        console.log(`Player = ${humanScore}`);
-        console.log(`Computer = ${computerScore}`)
+            playerDisplay.textContent = humanScore;
+            computerDisplay.textContent = computerScore;
+        
         }
 
     }
@@ -95,7 +99,11 @@ const ControlDisplay = function(){
 
 
     const isWin = function(player, computer){
-        console.log(`${player} wins vs ${computer} !`)
+        console.log(`${player} wins vs ${computer} !`);
+        const display = document.querySelector("#display");
+        
+        display.textContent = `${player} vs ${computer}`;
+        display.textContent += 'You win !'
 
     }
 
