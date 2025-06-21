@@ -44,7 +44,7 @@ body{
 }
 
 
-.content > div:first-child > div:not(.score){
+#display{
     width: 50%;
     height: 80%;
     background-color: var(--main-light-grey);
@@ -55,6 +55,7 @@ body{
     justify-content: center;
     text-align: center;
     align-self: center;
+    gap: 1rem;
 
     border: 1px solid #5e6067;
 
