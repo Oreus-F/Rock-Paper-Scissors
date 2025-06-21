@@ -23,7 +23,7 @@ const checkCondition = function(player, computer){
     const control = ControlDisplay();
 
     if(player == computer) {
-        control.isDraw();
+        control.isDraw(player, computer);
         result = 'draw'
         return result;
     }
@@ -87,9 +87,21 @@ const Score = function(){
 
 
 const ControlDisplay = function(){
+    const display = document.querySelector('#display');
 
-    const isDraw = function(){
-    console.log(`It's a Draw, try again !`)
+
+    const displayChoices = function(player, computer){
+        const p = document.createElement("p");
+        p.textContent = `You choose ${player} vs ${computer} !`;
+        return p
+    }
+
+    const isDraw = function(player, computer){
+        display.replaceChildren();
+        display.appendChild(displayChoices(player, computer))
+        const p = document.createElement("p");
+        p.textContent = "It's a draw. Try again !";
+        display.appendChild(p);
     }   
 
 
@@ -99,17 +111,33 @@ const ControlDisplay = function(){
 
 
     const isWin = function(player, computer){
-        console.log(`${player} wins vs ${computer} !`);
-        const display = document.querySelector("#display");
+        display.replaceChildren();
+
+        display.appendChild(displayChoices(player, computer));
+
+        const p = document.createElement("p");
+        p.textContent = `${player} beat ${computer}`;
+        const p2 = document.createElement("p");
+        p2.textContent = "You win !";
         
-        display.textContent = `${player} vs ${computer}`;
-        display.textContent += 'You win !'
+        display.appendChild(p);
+        display.appendChild(p2);
 
     }
 
 
     const isLoose = function(player, computer){
-        console.log(`${player} loose vs ${computer} !`)
+        display.replaceChildren();
+
+        display.appendChild(displayChoices(player, computer));
+
+        const p = document.createElement("p");
+        p.textContent = `${computer} beat ${player}`;
+        const p2 = document.createElement("p");
+        p2.textContent = "You loose !";
+        
+        display.appendChild(p);
+        display.appendChild(p2);
     }
 
 
@@ -118,7 +146,7 @@ const ControlDisplay = function(){
 }
 
 
-const playGame = function(){
+const PlayGame = function(){
     const score = Score();
 
     
@@ -156,5 +184,5 @@ const playGame = function(){
     
 };
 
-playGame();
+PlayGame();
 
