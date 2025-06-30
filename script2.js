@@ -238,3 +238,4 @@ const PlayGame = function(){
 
 PlayGame().newGame();
 
+console.log("ok")
