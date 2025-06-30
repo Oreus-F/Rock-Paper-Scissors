@@ -141,27 +141,74 @@ const ControlDisplay = function(){
     }
 
 
-    return {isDraw, displayResult}
+    const newButtons = function(){
+        const container = document.querySelector('.choices');
+        container.replaceChildren();
+        
+        for (let x=0; x<3; x++){
+            const button = document.createElement('button');
+            button.setAttribute("id", x);
+            button.textContent = choices[x];
+            container.appendChild(button);
+        }
+    }
+
+
+    const getButtons = function(){
+        const container = document.querySelector('.choices');
+
+        return buttons = container.querySelectorAll('button');   
+    };
+
+
+    const createNewGameButton = function(){
+        const container = document.querySelector('.choices');
+        container.replaceChildren();
+        
+        const button = document.createElement('button');
+        button.setAttribute('id', 'tryAgain');
+        button.textContent = 'New Game';
+        
+        container.appendChild(button);
+        return button
+    }
+
+
+    return {isDraw, displayResult, newButtons, getButtons, createNewGameButton}
 
 }
 
-
 const PlayGame = function(){
     const score = Score();
+    const control = ControlDisplay();
+    
+    
+    const newGame = function(){
+        const newGameButton = control.createNewGameButton();
+
+        newGameButton.addEventListener('click', () => {
+            startGame();
+        })
+    }
 
     
-    const buttons = document.querySelectorAll('button');
-    
-    buttons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            const target = e.target.id;
-            const player = choices[target];
+    const startGame = function(){
+        control.newButtons();
+        const buttons = control.getButtons();
+        
+        buttons.forEach(button => {
+            
+            button.addEventListener('click', (e) => {
+                const target = e.target.id;
+                const player = choices[target];
+            
+                score.updateScore(playRound(player));
+                checkGame();
+            });
+        })
 
-            score.updateScore(playRound(player));
-            checkGame();
-        });
-    });
-    
+    }
+   
     
     const checkGame = function(){
         const human = score.getHumanScore();
@@ -179,11 +226,15 @@ const PlayGame = function(){
         } else {
             console.log("Sorry you loose !");
         }
-        buttons.forEach(button => {button.setAttribute("disabled", "true")})
+
+        newGame();
+
     }
     
+
+    return {newGame}
 };
 
-PlayGame();
 
-console.log("ok")
+PlayGame().newGame();
+
