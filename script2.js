@@ -52,8 +52,16 @@ const checkCondition = function(player, computer){
 
 
 const Score = function(){
-    let humanScore = 0;
-    let computerScore = 0;
+    let humanScore;
+    let computerScore;
+
+
+    const reset = function(){
+        humanScore = 0;
+        computerScore = 0;
+
+        displayScore();
+    }
 
 
     const getHumanScore = function(){
@@ -66,23 +74,28 @@ const Score = function(){
     }
 
 
-    const updateScore = function(result){
-        const playerDisplay = document.querySelector("#playerScore");
-        const computerDisplay = document.querySelector("#computerScore");
-
+    const updateScore = function(result){        
         if (result === 'draw'){
             return
         } else {
-        result ? humanScore++ : computerScore++;
-
-            playerDisplay.textContent = humanScore;
-            computerDisplay.textContent = computerScore;
-        
+            result ? humanScore++ : computerScore++;
+            
+            displayScore();
         }
+        
+    }
+    
+    
+    const displayScore = function(){
+        const playerDisplay = document.querySelector("#playerScore");
+        const computerDisplay = document.querySelector("#computerScore");
 
+        playerDisplay.textContent = humanScore;
+        computerDisplay.textContent = computerScore;
+        
     }
 
-    return {updateScore, getHumanScore, getComputerScore};
+    return {updateScore, getHumanScore, getComputerScore, reset};
 };
 
 
@@ -96,8 +109,15 @@ const ControlDisplay = function(){
         return p
     }
 
-    const isDraw = function(player, computer){
+
+    const resetDisplay = function(){
         display.replaceChildren();
+    };
+
+
+    const isDraw = function(player, computer){
+        resetDisplay();
+
         display.appendChild(displayChoices(player, computer))
         const p = document.createElement("p");
         p.textContent = "It's a draw. Try again !";
@@ -111,7 +131,7 @@ const ControlDisplay = function(){
 
 
     const isWin = function(player, computer){
-        display.replaceChildren();
+        resetDisplay();
 
         display.appendChild(displayChoices(player, computer));
 
@@ -124,7 +144,7 @@ const ControlDisplay = function(){
 
 
     const isLoose = function(player, computer){
-        display.replaceChildren();
+        resetDisplay();
 
         display.appendChild(displayChoices(player, computer));
 
@@ -145,6 +165,9 @@ const ControlDisplay = function(){
             button.textContent = choices[x];
             container.appendChild(button);
         }
+
+
+        return getButtons();
     }
 
 
@@ -168,7 +191,17 @@ const ControlDisplay = function(){
     }
 
 
-    return {isDraw, displayResult, newButtons, getButtons, createNewGameButton}
+    const endDisplay = function(result){
+        resetDisplay();
+
+        const p = document.createElement("p");
+        p.textContent = result ? "You won this game !" : "You loose this game, try again ?";
+
+        display.appendChild(p);
+    }
+
+
+    return {isDraw, displayResult, newButtons, createNewGameButton, endDisplay, resetDisplay}
 
 }
 
@@ -179,17 +212,17 @@ const PlayGame = function(){
     
     const newGame = function(){
         const newGameButton = control.createNewGameButton();
-        const score = Score();
 
         newGameButton.addEventListener('click', () => {
+            score.reset();
+            control.resetDisplay();
             startGame();
         })
     }
 
     
     const startGame = function(){
-        control.newButtons();
-        const buttons = control.getButtons();
+        const buttons = control.newButtons();
         
         buttons.forEach(button => {
             
@@ -217,9 +250,9 @@ const PlayGame = function(){
 
     const endGame = function(human){
         if (human === 5){
-            console.log("Congratulation you won !");
+            control.endDisplay(true)
         } else {
-            console.log("Sorry you loose !");
+            control.endDisplay(false);
         }
 
         newGame();
