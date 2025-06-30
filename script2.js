@@ -92,7 +92,7 @@ const ControlDisplay = function(){
 
     const displayChoices = function(player, computer){
         const p = document.createElement("p");
-        p.textContent = `You choose ${player} vs ${computer} !`;
+        p.textContent = `${player} vs ${computer} !`;
         return p
     }
 
@@ -116,12 +116,9 @@ const ControlDisplay = function(){
         display.appendChild(displayChoices(player, computer));
 
         const p = document.createElement("p");
-        p.textContent = `${player} beat ${computer}`;
-        const p2 = document.createElement("p");
-        p2.textContent = "You win !";
+        p.textContent = "You win !";
         
         display.appendChild(p);
-        display.appendChild(p2);
 
     }
 
@@ -132,12 +129,9 @@ const ControlDisplay = function(){
         display.appendChild(displayChoices(player, computer));
 
         const p = document.createElement("p");
-        p.textContent = `${computer} beat ${player}`;
-        const p2 = document.createElement("p");
-        p2.textContent = "You loose !";
+        p.textContent = "You loose !";
         
         display.appendChild(p);
-        display.appendChild(p2);
     }
 
 
@@ -185,6 +179,7 @@ const PlayGame = function(){
     
     const newGame = function(){
         const newGameButton = control.createNewGameButton();
+        const score = Score();
 
         newGameButton.addEventListener('click', () => {
             startGame();
